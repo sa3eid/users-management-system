@@ -12,9 +12,11 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <script src="{{ mix('js/app.js') }}"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
         <script src='https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js'></script>
         <script src='https://cdn.datatables.net/autofill/2.3.5/js/dataTables.autoFill.min.js'></script>
         <script src='https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js'></script>
+
 
     </head>
     <body>

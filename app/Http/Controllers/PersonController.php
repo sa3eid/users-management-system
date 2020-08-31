@@ -20,7 +20,27 @@ class PersonController extends Controller
     {
         //retreive all data from DB
         $data = Persons::all();
-		
+        // get data ordered by name
+        // $data = Persons::orderBy('Name', 'Desc')->get();
+        // get daata by Id
+        // $data = Persons::where('Id', 1)->get();
+
+        // $data = [
+        //     ['name' => 'Georgina Rodriguez', 'age' => 28, 'nationality' => 'Argentinian'],
+        //     ["name" => "Irina Shayk", "age" => 34, "nationality" => "Russian"],
+        // ];
+
+        // return respeonse as a string value
+        // return 'Hello World!!';
+
+        //return response as json representation of array
+        // return [
+        //     ["name" => "Georgina Rodriguez", "age" => 28, "Nationality" => "Argentinian"],
+        //     ["name" => "Irina Shayk", "age" => 34, "Nationality" => "Russian"],
+        // ];
+
+        // return view
+
         // get name and age from query parameters url
 
         return view('persons.persons', [
@@ -50,18 +70,29 @@ class PersonController extends Controller
 
     public function store()
     {
-        // error_log(request('name'));
+        // error_log(request('residence'));
         // dd(request('name'));
+        // error_log(request('nationality'));
 
-        $data = request()->validate([
-            'Name' => 'required|min:3',
-            'Nationality' => 'required|min:3',
-            'Residence' => 'required|min:3',
-            'Email' => 'required|min:3',
-            'Age' => 'required',
-            'Birthdate' => 'required',
-        ]);
-        \App\Persons::create($data);
+        // $data = request()->validate([
+        //     'Name' => 'required|min:3',
+        //     'Nationality' => 'required|min:3',
+        //     'Residence' => 'required|min:3',
+        //     'Email' => 'required|min:3',
+        //     'Age' => 'required',
+        //     'Birthdate' => 'required',
+        // ]);
+        // \App\Persons::create($data);
+
+        $person = new Persons;
+        $person->Name = request('name');
+        $person->Age = request('age');
+        $person->Email = request('email');
+        $person->Residence = request('residence');
+        $person->Nationality = request('nationality');
+        $person->Birthdate = request('birthdate');
+
+        $person->save();
 
         return redirect('/persons')->with('msg', 'User has been submitted successfully');
     }
@@ -97,7 +128,8 @@ class PersonController extends Controller
     }
     public function select2()
     {
-        $matchedNationality =  Persons::select('Id as id', 'Nationality as text')->where('Nationality', 'LIKE', '%' . request('searchTerm') . '%')->get();
+        $matchedNationality =  Persons::select('Id as id', 'Nationality as text')->where('Nationality', 'LIKE',  '%' . request('searchTerm') . '%')->distinct()->get();
+
         return $matchedNationality;
     }
 

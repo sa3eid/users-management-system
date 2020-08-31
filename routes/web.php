@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 Route::get('/persons', 'PersonController@index')->middleware('auth');
 Route::get('/persons/create', 'PersonController@create');
+Route::post('/persons/store', 'PersonController@store');
 
 // authenticating all routes handlers for admin dashboard
 
@@ -53,7 +54,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/persons/datatable', 'PersonController@getdatatable')->middleware('auth');
 Route::post('/api/datatable', 'PersonController@handledatatable')->middleware('auth');
-Route::post('/persons', 'PersonController@store');
 
 // taking route parameters of id
 Route::get('/persons/{id}', 'PersonController@show')->middleware('auth');
