@@ -20,4 +20,4 @@ This system used to register/login users into the system and manage those users 
 
 # Credits
 
-- Credits goes to Colorlib and AdminLTE for usage of both bootstrap theme and template
+- Credits goes to Colorlib and AdminLTE for both of bootstrap theme and template
