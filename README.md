@@ -5,7 +5,7 @@ This system used to register/login users into the system and manage those users 
 
 # Notice
 
-* Make sure to extract public.7z
+* Make sure to extract public.7z, dashboard-template.7z and login-register-theme.7z
 
 * Make sure to install all npm packages for this project => npm install
 
